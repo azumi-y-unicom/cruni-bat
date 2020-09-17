@@ -13,6 +13,8 @@ print("app_conf:",  app_conf)
 logging.config.fileConfig(os.path.join(app_conf, "logging.conf"))
 
 from logging import getLogger
+from mylib.ocr import MyOcr
+
 logger = getLogger(__name__)
 
 # コマンドラインの引数を設定
@@ -23,9 +25,12 @@ logger = getLogger(__name__)
 def cmd(must_arg, option_arg):
     logger.info("START cmd")
     try:
-        print("hoge")
+        myOcr = MyOcr()
+        text = myOcr.recognize_image(must_arg)
+
+        print(text)
     except Exception as ex:
-        print(ex)
+        logger.fatal(ex)
         pass
     logger.info("End cmd")
 

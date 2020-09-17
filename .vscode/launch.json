@@ -6,7 +6,7 @@
     "configurations": [
         
         {
-            "args": ["-m hoge"],
+            "args": ["-mD:\\programings\\python\\cruni-bat\\tests\\images\\test1.png"],
             "name": "Python: Current File",
             "type": "python",
             "request": "launch",
