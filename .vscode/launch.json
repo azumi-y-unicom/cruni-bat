@@ -4,9 +4,9 @@
     // 詳細情報は次を確認してください: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        
         {
-            "args": ["-mD:\\programings\\python\\cruni-bat\\tests\\images\\test1.png"],
+            "args": ["-mD:\\programings\\python\\cruni-bat\\tests\\images\\test1.png",
+                "-oD:\\programings\\python\\cruni-bat\\tests\\text\\test1.txt"],
             "name": "Python: Current File",
             "type": "python",
             "request": "launch",
