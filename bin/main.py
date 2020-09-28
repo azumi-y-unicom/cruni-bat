@@ -11,6 +11,7 @@ APP_HOME = os.path.abspath(os.path.join( os.path.dirname(os.path.abspath(__file_
 print("APP_HOME:", APP_HOME)
 APP_CONF = os.path.join(APP_HOME, "conf")
 print("APP_CONF:", APP_CONF)
+APP_TEMP_DIR = os.path.join(APP_HOME, "data\\img")
 
 sys.path.append(os.path.join(APP_HOME))
 
@@ -19,7 +20,6 @@ from mylib.image_edit import ImageEdit
 
 logging.config.fileConfig(os.path.join(APP_CONF, "logging.conf"))
 logger = getLogger(__name__)
-
 
 # コマンドラインの引数を設定
 @click.command()
@@ -31,8 +31,9 @@ def cmd(must_arg, option_arg):
     try:
         image_file = must_arg
 
-        image_edit = ImageEdit()
-        # image_edit.hoge(image_file)
+        image_edit = ImageEdit(APP_TEMP_DIR)
+        image_edit.convert_greyscale(image_file)
+        image_file = image_edit.last_image
 
         my_ocr = MyOcr()
         text = my_ocr.recognize_image(image_file)
